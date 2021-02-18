@@ -1,0 +1,7 @@
+datafile: "data.csv"
+deleteafter: 100000
+router: "0.0.0.0"
+badping: 200
+email: "example@gmail.com"
+password: "1234"
+sendto: "example2@gmail.com"
