@@ -1,6 +1,6 @@
 datafile: "data.csv"
 deleteafter: 100000
-router: "0.0.0.0"
+router: "10.0.0.1"
 badping: 200
 email: "example@gmail.com"
 password: "1234"

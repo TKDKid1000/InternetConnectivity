@@ -26,7 +26,6 @@ public class Commands {
 			csv.remove((int) config.get("deleteafter"));
 			new CSV().save(csv, (String) config.get("datafile"));
 		}
-		long start = System.currentTimeMillis();
 		String wifi = "Disconnected";
 		try {
 			InetAddress add = InetAddress.getByName((String) config.get("router"));
@@ -48,7 +47,9 @@ public class Commands {
 			URLConnection connection = url.openConnection();
 			connection.connect();
 			System.out.println("Connected");
-			long end = System.currentTimeMillis()-start;
+			java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec("ping google.com -c 1").getInputStream()).useDelimiter("\\A");
+			String pingcmd = s.hasNext() ? s.next() : "";
+			String end = pingcmd.split("\n")[1].split(" ")[7].split("=")[1];
 			System.out.println("Response in " + end + " milliseconds.");
 			new CSV().insert(new String[] {"Connected", end + "", wifi+"", Utils.getDateTime()}, (String) config.get("datafile"), 1);
 		} catch (MalformedURLException e) {
